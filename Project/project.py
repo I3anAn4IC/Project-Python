@@ -2,11 +2,10 @@ import pygame as pg
 import Window
 import Block
 
-
 # иниициализация окна
 screen = Window.WindowFullScreen(120, pg.time.Clock(),
-                                pg.display.set_mode((0, 0), pg.FULLSCREEN),
-                                False)
+                                 pg.display.set_mode((0, 0), pg.FULLSCREEN),
+                                 False)
 screen.Screen()
 
 # создание блоков

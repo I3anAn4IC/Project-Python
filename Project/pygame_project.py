@@ -16,7 +16,6 @@ def display_board(HANG_MAN_PICS, missed_letters, correct_letters, secret_word, f
     screen.blit(picture, (100, 200))
 
 
-
 def main():
     font = pg.font.Font(None, 32)
     clock = pg.time.Clock()
