@@ -34,3 +34,9 @@ class WindowFullScreen:
 
         if gameover:
             pg.quit()
+
+
+# class Blocks():
+#     def __init__(self, size_block):
+#         self.size_block = size_block
+#         self.rect = self.size_block.get_rect(center=(150, 150))

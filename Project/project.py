@@ -1,6 +1,7 @@
 import pygame as pg
 import Window
 import Block
+import random
 
 
 # иниициализация окна
@@ -10,13 +11,21 @@ screen = Window.WindowFullScreen(120, pg.time.Clock(),
 screen.Screen()
 
 # создание блоков
-Block1 = Block.Blocks((100, 100))
-# size_block = pg.Surface((100, 100))
-# size_block_rect = size_block.get_rect()
-# size_block_rect.center = (150, 150)
-# color = (255, 0, 123)
-# pg.draw.rect(size_block, color, (0, 0, 250, 200))
+W = 405
+H = 310
 
-screen.ScreenBlit(size_block, size_block_rect)
+Block1 = Block.Blocks((10, 10), (random.randint(75, 405), random.randint(50, 310)))
+Block1.AddBlock()
+Block1 = Block.Blocks((10, 10), (random.randint(75, 405), random.randint(50, 310)))
+Block1.AddBlock()
+Block1 = Block.Blocks((10, 10), (random.randint(75, 405), random.randint(50, 310)))
+Block1.AddBlock()
+Block1 = Block.Blocks((10, 10), (random.randint(75, 405), random.randint(50, 310)))
+Block1.AddBlock()
+Block12 = Block.Blocks((100, 100), (random.randint(1430, 1835), random.randint(715, 1025)))
+Block12.AddBlock()
+
+screen.ScreenBlit(Block1.size_block, Block1.size_block_rect)
+screen.ScreenBlit(Block12.size_block, Block12.size_block_rect)
 
 screen.ScreenClose()
