@@ -1,0 +1,84 @@
+import pygame as pg
+
+"""import nemesis.py;"""
+
+
+class Button:
+    def __init__(self, width, height, screen):
+        self.screen = screen
+        self.width = width
+        self.height = height
+        self.inactive_color = (23, 204, 58)
+        self.active_color = (13, 162, 58)
+
+    # "рисовка" кнопки на экране
+    def draw_button(self, x, y, message=None, action=None):
+        mouse = pg.mouse.get_pos()
+        click = pg.mouse.get_pressed()
+        if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:
+            pg.draw.rect(self.screen, self.inactive_color, (x, y, self.width, self.height))
+            # что делать после нажатия:
+            if click[0] == 1:
+                print("fdhvbfkndj")
+                pg.time.delay(300)
+        else:
+            pg.draw.rect(self.screen, self.active_color, (x, y, self.width, self.height))
+
+        set_text(message, x + 10, y + 10, self.screen)
+
+
+# Задать текст который будет на кнопке
+def set_text(message, x, y, screen, font_color=(0, 0, 0), font_size=30):
+    font_button = pg.font.Font(None, font_size)
+    text = font_button.render(message, True, font_color)
+    screen.blit(text, (x, y))
+
+# def main():
+#     font = pg.font.Font(None, 32)
+#     clock = pg.time.Clock()
+#     input_box = pg.Rect(100, 100, 140, 32)
+#     color_inactive = pg.Color('lightskyblue3')
+#     color_active = pg.Color('dodgerblue2')
+#     color = color_inactive
+#     active = False
+#     text = ''
+#     done = False
+#     button = Button(100, 100, )
+#
+#     while not done:
+#
+#         for event in pg.event.get():
+#             if event.type == pg.QUIT:
+#                 done = True
+#             if event.type == pg.MOUSEBUTTONDOWN:
+#                 if input_box.collidepoint(event.pos):
+#                     active = not active
+#                 else:
+#                     active = False
+#                 color = color_active if active else color_inactive
+#             if event.type == pg.KEYDOWN:
+#                 if active:
+#                     if event.key == pg.K_RETURN:
+#                         print(text)
+#                         text = ''
+#                     elif event.key == pg.K_BACKSPACE:
+#                         text = text[:-1]
+#                     else:
+#                         text += event.unicode
+#
+#         screen.fill((30, 30, 30))
+#         txt_surface = font.render(text, True, color)
+#         width = max(200, txt_surface.get_width() + 10)
+#         input_box.w = width
+#         button.draw_button(30, 60, 'wow')
+#         screen.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
+#         pg.draw.rect(screen, color, input_box, 2)
+#
+#         pg.display.flip()
+#         clock.tick(30)
+#
+#
+# if __name__ == '__main__':
+#     pg.init()
+#     main()
+#     pg.quit()

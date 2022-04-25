@@ -1,6 +1,7 @@
 import pygame as pg
 import random
 
+
 class Fruit(pg.sprite.Sprite):
     def __init__(self, x, filename, speedy):
         pg.sprite.Sprite.__init__(self)
@@ -21,7 +22,7 @@ class Cat(pg.sprite.Sprite):
     def __init__(self, filename):
         pg.sprite.Sprite.__init__(self)
         self.image = pg.image.load(filename)
-        self.image = pg.transform.scale(self.image, (W, 50))
+        # self.image = pg.transform.scale(self.image, (W, 50))
         self.rect = self.image.get_rect(center=(W//2, H-50))
 
     def update(self):
