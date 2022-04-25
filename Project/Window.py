@@ -4,17 +4,19 @@ import pygame as pg
 
 
 class WindowFullScreen:
-    def __init__(self, FPS, clock, screen, gameover):
+    def __init__(self, FPS, clock, screen, gameover, window_info):
         self.FPS = FPS
         self.clock = clock
         self.screen = screen
         self.gameover = gameover
+        self.window_info = window_info
 
     def Screen(self):
         pg.init()
         FPS = self.FPS
         clock = self.clock
         screen = self.screen
+        self.window_info = pg.display.Info()
         pg.display.flip()
 
     def ScreenBlit(self, firstname, secondname):
