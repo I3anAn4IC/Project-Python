@@ -11,14 +11,14 @@ missed_letters = ''
 correct_letters = ''
 text1 = ' '
 GAME_IS_ON = True
-# screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
-# W = pg.display.Info().current_w
-# H = pg.display.Info().current_h
-W = 1920
-H = 1080
+screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
+W = pg.display.Info().current_w
+H = pg.display.Info().current_h
+# W = 1920
+# H = 1080
 MIN = min(H, W) - 200
 MAX = max(H, W)
-screen = pg.display.set_mode((W, H))
+# screen = pg.display.set_mode((W, H))
 # устанавливаем размер шрифта
 FONT_SIZE = MIN // 16
 # вводим значения для координат текста с правильностью ввода
@@ -44,12 +44,12 @@ def display_board(font):
         if len(missed_letters) == 0:
             picture = pg.image.load(HANG_MAN_PICS[len(missed_letters)])
         else:
-            picture = pg.image.load(HANG_MAN_PICS[len(missed_letters) - len(missed_letters)//2])
+            picture = pg.image.load(HANG_MAN_PICS[len(missed_letters) - len(missed_letters) // 2])
         picture_rect = picture.get_rect()
         picture = pg.transform.scale(picture, (MIN, MIN))
         screen.blit(picture, (0, 0))
     else:
-        picture = pg.image.load(HANG_MAN_PICS[len(missed_letters) - len(missed_letters)//2])
+        picture = pg.image.load(HANG_MAN_PICS[len(missed_letters) - len(missed_letters) // 2])
         screen.blit(picture, (0, 0))
         GAME_IS_ON = False
         for i in range(len(secret_word)):
@@ -123,7 +123,8 @@ def main():
                 color = color_active if active else color_inactive
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
-                    done = True
+                    screen.fill((0, 0, 0))
+                    return
                 if active and GAME_IS_ON:
                     if event.key == pg.K_RETURN:
                         text1 = text
@@ -133,7 +134,6 @@ def main():
                         text = text[:-1]
                     else:
                         text += event.unicode
-
         screen.fill((255, 255, 255))
         txt_surface = font.render(text, True, color)
         width = max(200, txt_surface.get_width() + 10)
@@ -142,7 +142,6 @@ def main():
         pg.draw.rect(screen, color, input_box, 2)
         display_board(font)
         check_letters(text1, font)
-
         pg.display.flip()
         clock.tick(30)
 
