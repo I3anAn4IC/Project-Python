@@ -1,6 +1,10 @@
 import pygame as pg
+from pygame_project import main
 
 """import nemesis.py;"""
+
+
+# screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
 
 
 class Button:
@@ -8,29 +12,62 @@ class Button:
         self.screen = screen
         self.width = width
         self.height = height
-        self.inactive_color = (23, 204, 58)
-        self.active_color = (13, 162, 58)
+        self.inactive_color = (240, 166, 148)
+        self.active_color = (229, 116, 58)
 
     # "рисовка" кнопки на экране
-    def draw_button(self, x, y, message=None, action=None):
+    def draw_button(self, x, y, message=None, font=None, button_num=None, done=None):
+        global width_text, height_text
+        mouse = pg.mouse.get_pos()
+        click = pg.mouse.get_pressed()
+        # width_text, height_text = font.size(message)
+        if len(message) >= 1:
+            font_button = pg.font.Font(None, self.height)
+            text = font_button.render(message, True, self.height)
+            width_text = text.get_width()
+            height_text = text.get_height()
+        # screen.blit(text, (x + width_text, y+ height_text))
+        # set_text(message, x + 10, y, self.screen,
+        #          font_size=self.height)
+        # print(width_text, height_text)
+        # if message:
+        #     font_button = pg.font.Font(None, self.height)
+        #     text = font_button.render(message, True, self.height)
+        #     width_text = text.get_width()
+        #     print(width_text)
+        #     screen.blit(text, (x, y))
         mouse = pg.mouse.get_pos()
         click = pg.mouse.get_pressed()
         if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:
             pg.draw.rect(self.screen, self.inactive_color, (x, y, self.width, self.height))
             # что делать после нажатия:
             if click[0] == 1:
-                print("fdhvbfkndj")
+                if button_num == 1:
+                    main()
                 pg.time.delay(300)
         else:
             pg.draw.rect(self.screen, self.active_color, (x, y, self.width, self.height))
+        set_text(message, x + (self.width - width_text) // 2, y + (self.height - height_text) // 2, self.screen,
+                 font_size=self.height)
 
-        set_text(message, x + 10, y + 10, self.screen)
+    # def click(self, x, y, win_open):
+    #     mouse = pg.mouse.get_pos()
+    #     click = pg.mouse.get_pressed()
+    #     if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:
+    #         pg.draw.rect(self.screen, self.inactive_color, (x, y, self.width, self.height))
+    #         # что делать после нажатия:
+    #         if click[0] == 1:
+    #             win_open
+    #             pg.time.delay(300)
+    #     else:
+    #         pg.draw.rect(self.screen, self.active_color, (x, y, self.width, self.height))
+    # Задать текст который будет на кнопке
 
 
-# Задать текст который будет на кнопке
 def set_text(message, x, y, screen, font_color=(0, 0, 0), font_size=30):
     font_button = pg.font.Font(None, font_size)
     text = font_button.render(message, True, font_color)
+    # print(width_text)
     screen.blit(text, (x, y))
 
 # def main():
@@ -43,7 +80,7 @@ def set_text(message, x, y, screen, font_color=(0, 0, 0), font_size=30):
 #     active = False
 #     text = ''
 #     done = False
-#     button = Button(100, 100, )
+#     button = Button(700, 100, screen)
 #
 #     while not done:
 #
@@ -70,7 +107,10 @@ def set_text(message, x, y, screen, font_color=(0, 0, 0), font_size=30):
 #         txt_surface = font.render(text, True, color)
 #         width = max(200, txt_surface.get_width() + 10)
 #         input_box.w = width
-#         button.draw_button(30, 60, 'wow')
+#         button.draw_button(30, 60, 'WOW', font)
+#         # width1, height = font.size(text)
+#         # print(text)
+#         # print(width1, height)
 #         screen.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
 #         pg.draw.rect(screen, color, input_box, 2)
 #
