@@ -1,9 +1,9 @@
 import pygame as pg
-
+from pygame import *
 '''Класс создания и закрывания окна'''
 
 
-class WindowFullScreen:
+class WindowFullScreen(sprite.Sprite, Surface):
     def __init__(self, FPS, clock, screen, gameover, window_info):
         self.FPS = FPS
         self.clock = clock
