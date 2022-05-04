@@ -1,8 +1,5 @@
-import pygame_project
-import Window
 import pygame as pg
 from Button import Button
-from pygame_project import main
 
 screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
 pg.init()
