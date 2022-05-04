@@ -11,16 +11,15 @@ class WindowFullScreen(sprite.Sprite, Surface):
         self.gameover = False
         self.window_info = pg.display.Info()
 
-    def Screen(self):
-        pg.init()
-        FPS = self.FPS
-        clock = self.clock
-        screen = self.screen
-        pg.display.flip()
+    # def Screen(self):
+    #     pg.init()
+    #     FPS = self.FPS
+    #     clock = self.clock
+    #     screen = self.screen
+    #     # pg.display.flip()
 
     def ScreenBlit(self, firstname, secondname):
         self.screen.blit(firstname, secondname)
-        pg.display.flip()
 
     def ScreenClose(self):
         gameover = self.gameover

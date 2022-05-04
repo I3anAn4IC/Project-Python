@@ -1,7 +1,7 @@
 import pygame as pg
 import Block
 import random
-import Button
+import Test_Button
 
 # иниициализация окна
 screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
