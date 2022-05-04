@@ -36,20 +36,33 @@ class Button:
         #     width_text = text.get_width()
         #     print(width_text)
         #     screen.blit(text, (x, y))
-        mouse = pg.mouse.get_pos()
-        click = pg.mouse.get_pressed()
-        if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:
-            pg.draw.rect(self.screen, self.inactive_color, (x, y, self.width, self.height))
-            # что делать после нажатия:
-            if click[0] == 1:
-                if button_num == 1:
-                    main()
-                pg.time.delay(300)
-        else:
-            pg.draw.rect(self.screen, self.active_color, (x, y, self.width, self.height))
+
+        click_button(self.height, self.width, self.inactive_color, self.active_color, self.screen, x, y, button_num)
+        # if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:
+        #     pg.draw.rect(self.screen, self.inactive_color, (x, y, self.width, self.height))
+        #     # что делать после нажатия:
+        #     if click[0] == 1:
+        #         if button_num == 1:
+        #             main()
+        #         pg.time.delay(300)
+        # else:
+        #     pg.draw.rect(self.screen, self.active_color, (x, y, self.width, self.height))
         set_text(message, x + (self.width - width_text) // 2, y + (self.height - height_text) // 2, self.screen,
                  font_size=self.height)
 
+
+def click_button(height, width, inactive_color, active_color, screen, x, y, button_num):
+    mouse = pg.mouse.get_pos()
+    click = pg.mouse.get_pressed()
+    if x < mouse[0] < x + width and y < mouse[1] < y + height:
+        pg.draw.rect(screen, inactive_color, (x, y, width, height))
+        # что делать после нажатия:
+        if click[0] == 1:
+            if button_num == 1:
+                main()
+            pg.time.delay(300)
+    else:
+        pg.draw.rect(screen, active_color, (x, y, width, height))
     # def click(self, x, y, win_open):
     #     mouse = pg.mouse.get_pos()
     #     click = pg.mouse.get_pressed()
