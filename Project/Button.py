@@ -1,5 +1,6 @@
 import pygame as pg
 from pygame_project import main
+# from project import funk
 
 """import nemesis.py;"""
 
@@ -8,12 +9,12 @@ from pygame_project import main
 
 
 class Button:
-    def __init__(self, width, height, screen):
+    def __init__(self, width, height, screen, inactive_color=(240, 166, 148), active_color=(229, 116, 58)):
         self.screen = screen
         self.width = width
         self.height = height
-        self.inactive_color = (240, 166, 148)
-        self.active_color = (229, 116, 58)
+        self.inactive_color = inactive_color
+        self.active_color = active_color
 
     # "рисовка" кнопки на экране
     def draw_button(self, x, y, message=None, font=None, button_num=None, done=None):
@@ -60,6 +61,8 @@ def click_button(height, width, inactive_color, active_color, screen, x, y, butt
         if click[0] == 1:
             if button_num == 1:
                 main()
+            # if button_num == 2:
+            #     funk()
             pg.time.delay(300)
     else:
         pg.draw.rect(screen, active_color, (x, y, width, height))

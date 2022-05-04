@@ -1,6 +1,6 @@
 import pygame as pg
 from pygame_project import main
-from project import funk
+from Project.project import funk
 
 """import nemesis.py;"""
 

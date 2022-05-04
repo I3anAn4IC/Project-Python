@@ -1,11 +1,6 @@
 import pygame as pg
 import random
-import Window
 
-# screen = Window.WindowFullScreen(FPS=120, clock=pg.time.Clock(), screen=pg.display.set_mode((0, 0), pg.FULLSCREEN),
-#                                  gameover=False, window_info=None)
-
-# screen.Screen()
 HANG_MAN_PICS = ['Sprites/1.jpg', 'Sprites/2.jpg', 'Sprites/3.jpg', 'Sprites/4.jpg', 'Sprites/5.jpg', 'Sprites/6.jpg',
                  'Sprites/7.jpg', 'Sprites/8.jpg', 'Sprites/9.jpg']
 missed_letters = ''
