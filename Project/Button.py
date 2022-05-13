@@ -1,6 +1,6 @@
 import pygame as pg
 from pygame_project import main
-# from project import funk
+from project import funk
 
 """import nemesis.py;"""
 
@@ -61,8 +61,8 @@ def click_button(height, width, inactive_color, active_color, screen, x, y, butt
         if click[0] == 1:
             if button_num == 1:
                 main()
-            # if button_num == 2:
-            #     funk()
+            if button_num == 2:
+                funk()
             pg.time.delay(300)
     else:
         pg.draw.rect(screen, active_color, (x, y, width, height))
