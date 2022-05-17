@@ -23,7 +23,7 @@ class Button:
 
     # "рисовка" кнопки на экране
     def draw_button(self, x, y, message=None, font=None, button_num=None, done=None):
-        global width_text, height_text, score, f
+        global width_text, height_text, score
         mouse = pg.mouse.get_pos()
         click = pg.mouse.get_pressed()
         if len(message) >= 1:
@@ -39,75 +39,56 @@ class Button:
                     if t[0] == min(t):
                         t[0] = 10
                         score += 1
-                    elif t[0] == 10:
-                        print('Error:1')
                     else:
-                        print('Error:0')
-                        f = False
+                        print(1)
                 if button_num == 4:
                     if t[1] == min(t):
                         t[1] = 10
                         score += 1
-                    elif t[1] == 10:
-                        print('Error:1')
                     else:
-                        print('Error:0')
+                        print(1)
                 if button_num == 5:
                     if t[2] == min(t):
                         t[2] = 10
                         score += 1
-                    elif t[2] == 10:
-                        print('Error:1')
                     else:
-                        print('Error:0')
+                        print(1)
                 if button_num == 6:
                     if t[3] == min(t):
                         t[3] = 10
                         score += 1
-                    elif t[3] == 10:
-                        print('Error:1')
                     else:
-                        print('Error:0')
+                        print(1)
                 if button_num == 7:
                     if t[4] == min(t):
                         t[4] = 10
                         score += 1
-                    elif t[4] == 10:
-                        print('Error:1')
                     else:
-                        print('Error:0')
+                        print(1)
                 if button_num == 8:
                     if t[5] == min(t):
                         t[5] = 10
                         score += 1
-                    elif t[5] == 10:
-                        print('Error:1')
                     else:
-                        print('Error:0')
+                        print(1)
                 if button_num == 9:
                     if t[6] == min(t):
                         t[6] = 10
                         score += 1
-                    elif t[6] == 10:
-                        print('Error:1')
                     else:
-                        print('Error:0')
+                        print(1)
                 if button_num == 10:
                     if t[7] == min(t):
                         t[7] = 10
                         score += 1
-                    elif t[7] == 10:
-                        print('Error:1')
                     else:
-                        print('Error:0')
+                        print(1)
                 if button_num == 11:
                     if t[8] == min(t):
                         t[8] = 10
                         score += 1
-                    elif t[8] == 10:
-                        print('Error:1')
                     else:
-                        print('Error:0')
+                        print(1)
                 print(score)
                 pg.time.delay(300)
         else:
@@ -140,7 +121,6 @@ def draw_block():
 
 
 Block = Button(150, 100, screen, (247, 96, 159), (255, 0, 106))
-Block1 = Button(150, 100, screen, (255, 0, 0), (255, 0, 0))
 
 s = '123456789'
 t = []
@@ -152,19 +132,19 @@ while s != '':
     s = s.replace(p, '')
     t.append(int(h))
 
+
 coordinates = [[random.randint(75, (W // 3) - 150), random.randint(50, (H // 3) - 100)],
-               [random.randint(W // 3, W - (W // 3) - 150), random.randint(50, (H // 3) - 100)],
-               [random.randint(W - (W // 3), W - 150), random.randint(50, (H // 3) - 100)],
-               [random.randint(75, (W // 3) - 150), random.randint((H // 3), H - (H // 3) - 100)],
-               [random.randint(W // 3, W - (W // 3) - 150), random.randint((H // 3), H - (H // 3) - 100)],
-               [random.randint(W - (W // 3), W - 150), random.randint((H // 3), H - (H // 3) - 100)],
-               [random.randint(75, (W // 3) - 150), random.randint(H - (H // 3), H - 100)],
-               [random.randint(W // 3, W - (W // 3) - 150), random.randint(H - (H // 3), H - 100)],
-               [random.randint(W - (W // 3), W - 150), random.randint(H - (H // 3), H - 100)]]
+               [random.randint(W//3, W-(W//3)-150), random.randint(50, (H // 3) - 100)],
+               [random.randint(W-(W//3), W-150), random.randint(50, (H // 3) - 100)],
+               [random.randint(75, (W // 3) - 150), random.randint((H//3), H-(H//3)-100)],
+               [random.randint(W//3, W-(W//3)-150), random.randint((H//3), H-(H//3)-100)],
+               [random.randint(W-(W//3), W-150), random.randint((H//3), H-(H//3)-100)],
+               [random.randint(75, (W // 3) - 150), random.randint(H-(H//3), H-100)],
+               [random.randint(W//3, W-(W//3)-150), random.randint(H-(H//3), H-100)],
+               [random.randint(W-(W//3), W-150), random.randint(H-(H//3), H-100)]]
 
 
 def funk():
-    global timer
     screen.fill((0, 0, 0))
     Block.draw_button(coordinates[0][0], coordinates[0][1], str(t[0]), None, 3)
     Block.draw_button(coordinates[1][0], coordinates[1][1], str(t[1]), None, 4)
@@ -189,15 +169,18 @@ def funk():
                     timer.cancel()
                     return
         while not sec:
-            timer = threading.Timer(10, draw_block)
+            timer = threading.Timer(2, draw_block)
             timer.start()
             sec = True
         if f:
             draw_block()
-        if score == 9:
-            print('You win')
+
         clock.tick(FPS)
         pg.display.flip()
 
     if gameover:
         pg.quit()
+
+
+funk()
+
