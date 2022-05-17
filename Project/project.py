@@ -42,7 +42,7 @@ class Button:
                 if button_num == 3:
                     if t[0] == min(t):
                         t[0] = 10
-                        score += random.randint(1, 10)
+                        score += random.randint(9, 95)
                         points += 1
                     elif t[0] == 10:
                         print('Error:1')
@@ -52,7 +52,7 @@ class Button:
                 if button_num == 4:
                     if t[1] == min(t):
                         t[1] = 10
-                        score += random.randint(1, 10)
+                        score += random.randint(9, 95)
                         points += 1
                     elif t[1] == 10:
                         print('Error:1')
@@ -62,7 +62,7 @@ class Button:
                 if button_num == 5:
                     if t[2] == min(t):
                         t[2] = 10
-                        score += random.randint(1, 10)
+                        score += random.randint(9, 95)
                         points += 1
                     elif t[2] == 10:
                         print('Error:1')
@@ -72,7 +72,7 @@ class Button:
                 if button_num == 6:
                     if t[3] == min(t):
                         t[3] = 10
-                        score += random.randint(1, 10)
+                        score += random.randint(9, 95)
                         points += 1
                     elif t[3] == 10:
                         print('Error:1')
@@ -82,7 +82,7 @@ class Button:
                 if button_num == 7:
                     if t[4] == min(t):
                         t[4] = 10
-                        score += random.randint(1, 10)
+                        score += random.randint(9, 95)
                         points += 1
                     elif t[4] == 10:
                         print('Error:1')
@@ -92,7 +92,7 @@ class Button:
                 if button_num == 8:
                     if t[5] == min(t):
                         t[5] = 10
-                        score += random.randint(1, 10)
+                        score += random.randint(9, 95)
                         points += 1
                     elif t[5] == 10:
                         print('Error:1')
@@ -102,7 +102,7 @@ class Button:
                 if button_num == 9:
                     if t[6] == min(t):
                         t[6] = 10
-                        score += random.randint(1, 10)
+                        score += random.randint(9, 95)
                         points += 1
                     elif t[6] == 10:
                         print('Error:1')
@@ -112,7 +112,7 @@ class Button:
                 if button_num == 10:
                     if t[7] == min(t):
                         t[7] = 10
-                        score += random.randint(1, 10)
+                        score += random.randint(9, 95)
                         points += 1
                     elif t[7] == 10:
                         print('Error:1')
@@ -122,7 +122,7 @@ class Button:
                 if button_num == 11:
                     if t[8] == min(t):
                         t[8] = 10
-                        score += random.randint(1, 10)
+                        score += random.randint(9, 95)
                         points += 1
                     elif t[8] == 10:
                         print('Error:1')
@@ -172,6 +172,8 @@ def error_1():
     text = my_font_text.render(Won, True, (255, 255, 255))
     screen.blit(text, text_rect)
 
+
+# Создание объекта: кнопка
 
 Block = Button(150, 100, screen, (247, 96, 159), (255, 0, 106))
 
@@ -240,6 +242,9 @@ def funk():
         t.append(int(h))
 
     screen.fill((0, 0, 0))
+
+    # Отрисовка кнопок
+
     Block.draw_button(coordinates[0][0], coordinates[0][1], str(t[0]), None, 3)
     Block.draw_button(coordinates[1][0], coordinates[1][1], str(t[1]), None, 4)
     Block.draw_button(coordinates[2][0], coordinates[2][1], str(t[2]), None, 5)
@@ -252,6 +257,8 @@ def funk():
     Block.draw_button(coordinates[7][0], coordinates[7][1], str(t[7]), None, 10)
     Block.draw_button(coordinates[8][0], coordinates[8][1], str(t[8]), None, 11)
 
+    # Основной цикл игры
+
     while not gameover:
         for event in pg.event.get():
             if event.type == pg.KEYDOWN:
@@ -260,13 +267,19 @@ def funk():
                     timer.cancel()
                     return
 
+        # Запуск таймера
+
         while not sec:
             timer = threading.Timer(10, draw_block)
             timer.start()
             sec = True
 
+        # После завершения таймера отрисовываются кнопки без цифр
+
         if f and not win:
             draw_block()
+
+        # Проверка ситуации на выигрыш
 
         if points == 9 and not win:
             screen.fill((0, 0, 0))
@@ -281,6 +294,8 @@ def funk():
             screen.blit(text2, text_rect2)
 
             win = True
+
+        # Проверка ситуации на проигрыш
 
         if over and not win:
             screen.fill((0, 0, 0))
