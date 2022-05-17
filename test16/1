@@ -1,0 +1,71 @@
+    def draw_button(self, x, y, message=None, font=None, button_num=None, done=None):
+        global width_text, height_text, score
+        mouse = pg.mouse.get_pos()
+        click = pg.mouse.get_pressed()
+        if len(message) >= 1:
+            font_button = pg.font.Font(None, self.height)
+            text = font_button.render(message, True, self.height)
+            width_text = text.get_width()
+            height_text = text.get_height()
+
+        if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:
+            pg.draw.rect(self.screen, self.inactive_color, (x, y, self.width, self.height))
+            if click[0] == 1:
+                if button_num == 3:
+                    if t[0] == min(t):
+                        score = t[0]
+                if button_num == 4:
+                    if score == t[0]:
+                        score += t[1]
+                        t[0] += t[1]
+                    else:
+                        score -= t[1]
+                if button_num == 5:
+                    if score == t[0]:
+                        score += t[2]
+                        t[0] += t[2]
+                    else:
+                        score -= t[1]
+                if button_num == 6:
+                    if score == t[0]:
+                        score += t[3]
+                        t[0] += t[3]
+                    else:
+                        score -= t[1]
+                if button_num == 7:
+                    if score == t[0]:
+                        score += t[4]
+                        t[0] += t[4]
+                    else:
+                        score -= t[1]
+                if button_num == 8:
+                    if score == t[0]:
+                        score += t[5]
+                        t[0] += t[5]
+                    else:
+                        score -= t[1]
+                if button_num == 9:
+                    if score == t[0]:
+                        score += t[6]
+                        t[0] += t[6]
+                    else:
+                        score -= t[1]
+                if button_num == 10:
+                    if score == t[0]:
+                        score += t[7]
+                        t[0] += t[7]
+                    else:
+                        score -= t[1]
+                if button_num == 11:
+                    if score == t[0]:
+                        score += t[8]
+                        t[0] += t[8]
+                    else:
+                        score -= t[1]
+                print(score)
+                pg.time.delay(300)
+        else:
+            pg.draw.rect(self.screen, self.active_color, (x, y, self.width, self.height))
+
+        set_text(message, x + (self.width - width_text) // 2, y + (self.height - height_text) // 2, self.screen,
+                 font_size=self.height)
